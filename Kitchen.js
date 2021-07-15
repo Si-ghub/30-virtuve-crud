@@ -11,34 +11,30 @@ class Kitchen {
     nupirkta(name, amount) {
         let productObject = { name, amount }
         this.list.push(productObject);
-        console.log(productObject);
+        // console.log(productObject);
     }
 
     turimiProduktai() {
         let productNumber = 0;
         for (let i = 0; i < this.list.length; i++) {
             const product = this.list[i];
-            const newProduct = this.pirmaDidzioji(product.name)
+            const newProduct = this.firstBig(product.name)
             productNumber++
             console.log(`${productNumber}. ${newProduct}: ${product.amount}`);
         }
     }
 
-    pirmaDidzioji(text) {
-        let atsakymas = '';
-        // rasti pirmaja raide
-        // rasti likusias raides
-        // rasta pirmaja raide verciam i Didziaja
-        // atsakymas: didzioji raide + likusios raides
-        atsakymas = text;
-        return atsakymas;
+    firstBig(text) {
+        let answer = '';
+        answer = text.charAt(0).toUpperCase() + text.slice(1);
+        return answer;
     }
 
-    sunaudota(itemName, newAmount) {
+    sunaudota(item, newAmount) {
         for (let i = 0; i < this.list.length; i++) {
             const product = this.list[i];
 
-            if (itemName === product.name) {
+            if (item === product.name) {
                 product.amount -= newAmount;
                 break;
             }
@@ -46,20 +42,16 @@ class Kitchen {
         }
     }
 
-    // sugedesProduktas(item) {
-    //     if (!this.isValidIndex(item)) {
-    //         return false;
-    //     }
+    sugedesProduktas(name) {
+        const updatedList = [];
 
-    //     const updatedList = [];
-
-    //     for (let i = 0; i < this.list.length; i++) {
-    //         if (item !== item) {
-    //             updatedList.push(this.list(item));
-    //         }
-    //     }
-    //     this.list = updatedList;
-    // }
+        for (let i = 0; i < this.list.length; i++) {
+            if (this.list[i].name !== name) {
+                updatedList.push(this.list[i]);
+            }
+        }
+        this.list = updatedList;
+    }
 
 }
 
